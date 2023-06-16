@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
+import random
 
 
 # homepage
@@ -9,5 +10,10 @@ def home(request):
 
 # password page
 def password(request):
-    return render(request, 'gerator/password.html')
+    characters = list('abcdefghijklmnopqrstuvwxyz')
+    length = 10
+    the_password = ''
+    for i in range(length):
+        the_password += random.choice(characters)
+    return render(request, 'gerator/password.html', {'password': the_password})
 # Create your views here.
